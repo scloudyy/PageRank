@@ -23,4 +23,14 @@ public class UnitCellMultiplication {
             }
         }
     }
+
+    public static class PRMapper extends Mapper<Object, Text, Text, Text> {
+        @Override
+        protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            String[] idPr = value.toString().trim().split("\t");
+            String outputKey = idPr[0];
+            String outputValue = idPr[1];
+            context.write(new Text(outputKey), new Text(outputValue));
+        }
+    }
 }
