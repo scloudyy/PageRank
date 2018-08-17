@@ -1,1 +1,5 @@
 /hadoop/.idea/
+/scrapy/.idea/
+/scrapy/transition
+/scrapy/pr0
+/scrapy/keyvalue
