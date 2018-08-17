@@ -80,9 +80,10 @@ mvn package -DskipTests
 2. put `transition` and `pr0` produced by spider into `hdfs`
 
 ```shell
-hdfs dfs -mkdir -p pagerank/input
-hdfs dfs -put ../scrapy/transition pagerank/input/
-hdfs dfs -put ../scrapy/pr0 pagerank/input/
+hdfs dfs -mkdir -p pagerank/transition/
+hdfs dfs -put ../scrapy/transition pagerank/transition/
+hdfs dfs -mkdir -p pagerank/pagerank/pr
+hdfs dfs -put ../scrapy/pr0 pagerank/pagerank/pr
 ```
 
 3. run hadoop project
