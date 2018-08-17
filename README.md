@@ -84,6 +84,17 @@ hdfs dfs -mkdir -p pagerank/transition/
 hdfs dfs -put ../scrapy/transition pagerank/transition/
 hdfs dfs -mkdir -p pagerank/pagerank/pr
 hdfs dfs -put ../scrapy/pr0 pagerank/pagerank/pr
+hdfs dfs -mkdir -p pagerank/unit
 ```
 
 3. run hadoop project
+
+```shell
+hadoop jar page-rank.jar Driver pagerank/transition/ pagerank/pagerank/pr pagerank/unit 10
+```
+
+- `Driver` is the entry class
+- `pagerank/transition/` is the dir of transition in hdfs
+- `pagerank/pagerank/pr` is the dir of pr0 in hdfs
+- `pagerank/unit` is the dir of middle results
+- `10` is the times of convergence
