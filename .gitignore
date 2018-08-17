@@ -3,3 +3,5 @@ transition
 pr0
 keyvalue
 __pycache__
+*.class
+target

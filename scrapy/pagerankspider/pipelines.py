@@ -32,10 +32,10 @@ class MatrixPipeline(object):
             origin_id = self.id
             self.seen[origin] = origin_id
             self.id = self.id + 1
-            self.pr0.write(str(origin_id) + ':' + '1\n')
+            self.pr0.write(str(origin_id) + '\t' + '1\n')
             self.keyvalue.write(origin + '\t' + str(origin_id) + '\n')
 
-        trans_str = str(origin_id) + ':'
+        trans_str = str(origin_id) + '\t'
 
         tos = item.get('to')
         if tos is not None:
@@ -46,7 +46,7 @@ class MatrixPipeline(object):
                     to_id = self.id
                     self.seen[to] = to_id
                     self.id = self.id + 1
-                    self.pr0.write(str(to_id) + ':' + '1\n')
+                    self.pr0.write(str(to_id) + '\t' + '1\n')
                     self.keyvalue.write(to + '\t' + str(to_id) + '\n')
                 trans_str += str(to_id) + ','
             trans_str = trans_str[:-1]

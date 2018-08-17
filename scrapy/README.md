@@ -2,7 +2,7 @@
 
 We use `scrapy` to collect page rank dataset. The related code locates in the `scrapy\` dir
 
-## usage
+## Usage
 
 1. install scrapy first
 
@@ -32,35 +32,35 @@ scrapy crawl pagerank -a start='https://stackoverflow.com/' -a domain='stackover
 
 Be careful, `domain` should fit with `start`; If you don't set `start`, it should fit with the default `start_urls`
 
-## dataset
+## Dataset
 
 The data collected by spider will be stored into `keyvalue`, `transition` and `pr0` respectively.
 
 `keyvalue` records the each url and its key:
 
 ```
-https://github.com/	0
-https://github.com/features	1
-https://github.com/business	2
-https://github.com/explore	3
+https://github.com/\t0\n
+https://github.com/features\t1\n
+https://github.com/business\t2\n
+https://github.com/explore\t3\n
 ...
 ```
 
 `transtion` records the relationship betwenn pages:
 
 ```
-0:0,1,2,3,4,5,6,7,8,9
+0\t0,1,2,3,4,5,6,7,8,9\n
 ...
 ```
 
-which means page of id 0 points to pages of id 0,1,2,3,4,5,6,7,8,9
+page of id 0 points to pages of id 0,1,2,3,4,5,6,7,8,9, they are splited by '\t'
 
 `pr0` is the initial page rank value for each page:
 
 ```
-0:1
-1:1
-2:1
+0\t1\n
+1\t1\n
+2\t1\n
 ...
 ```
 

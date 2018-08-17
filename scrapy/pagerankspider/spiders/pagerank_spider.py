@@ -13,7 +13,7 @@ class MySpider(scrapy.Spider):
         self.start_urls = []
         self.logger.info(start)
         if start is None:
-            self.start_urls.append('https://www.baidu.com/')
+            self.start_urls.append('https://github.com/')
         else:
             self.start_urls.append(start)
         self.logger.info(self.start_urls)
