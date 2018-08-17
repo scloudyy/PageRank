@@ -1,5 +1,5 @@
-/hadoop/.idea/
-/scrapy/.idea/
-/scrapy/transition
-/scrapy/pr0
-/scrapy/keyvalue
+*/.idea/
+transition
+pr0
+keyvalue
+__pycache__
