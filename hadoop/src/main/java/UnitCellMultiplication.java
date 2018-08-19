@@ -17,13 +17,14 @@ public class UnitCellMultiplication {
         @Override
         protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             String[] fromTo = value.toString().trim().split("\t");
-            String outputKey = fromTo[0];
-            String[] tos = fromTo[1].split(",");
 
             // if there is no tos, then this website is a dead end
-            if (tos.length == 0) {
+            if (fromTo.length == 1) {
                 return;
             }
+
+            String outputKey = fromTo[0];
+            String[] tos = fromTo[1].split(",");
 
             double probability = 1.0 / tos.length;
             for (String to : tos) {

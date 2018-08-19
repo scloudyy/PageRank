@@ -5,3 +5,4 @@ keyvalue
 __pycache__
 *.class
 target
+*.jar
