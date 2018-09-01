@@ -45,10 +45,10 @@ The data collected by spider will be stored into `keyvalue`, `transition` and `p
 `keyvalue` records the each url and its key, splited by '\t':
 
 ```
-https://github.com/\t0\n
-https://github.com/features\t1\n
-https://github.com/business\t2\n
-https://github.com/explore\t3\n
+0\thttps://github.com/\n
+1\thttps://github.com/features\n
+2\thttps://github.com/business\n
+3\thttps://github.com/explore\n
 ...
 ```
 

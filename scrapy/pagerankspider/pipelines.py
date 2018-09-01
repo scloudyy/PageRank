@@ -33,7 +33,7 @@ class MatrixPipeline(object):
             self.seen[origin] = origin_id
             self.id = self.id + 1
             self.pr0.write(str(origin_id) + '\t' + '1\n')
-            self.keyvalue.write(origin + '\t' + str(origin_id) + '\n')
+            self.keyvalue.write(str(origin_id) + '\t' + origin + '\n')
 
         trans_str = str(origin_id) + '\t'
 
@@ -47,7 +47,7 @@ class MatrixPipeline(object):
                     self.seen[to] = to_id
                     self.id = self.id + 1
                     self.pr0.write(str(to_id) + '\t' + '1\n')
-                    self.keyvalue.write(to + '\t' + str(to_id) + '\n')
+                    self.keyvalue.write(str(to_id) + '\t' + to + '\n')
                 trans_str += str(to_id) + ','
             trans_str = trans_str[:-1]
         self.transition.write(trans_str + '\n')
