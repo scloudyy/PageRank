@@ -89,19 +89,42 @@ mvn package -DskipTests
 hdfs dfs -mkdir -p pagerank/transition/
 hdfs dfs -put ../scrapy/transition pagerank/transition/
 hdfs dfs -mkdir -p pagerank/pagerank/pr0
-hdfs dfs -put ../scrapy/pr0 pagerank/pagerank/pr0
+hdfs dfs -put ../scrapy/pr0 pagerank/pagerank/pr0/
+hdfs dfs -mkdir -p pagerank/keyvalue/
+hdfs dfs -put ../scrapy/keyvalue pagerank/keyvalue/
 hdfs dfs -mkdir -p pagerank/cache
 ```
 
-3. run hadoop project
+3. deal with MySQL
+
+- create MySQL database
+
+``` shell
+mysql -uroot -p
+create database PageRank;
+use PageRank;
+create table output(page_id VARCHAR(250), page_url VARCHAR(250), page_rank DOUBLE);
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+- download connector and put it into HDFS
 
 ```shell
-hadoop jar page-rank.jar Driver pagerank/transition/ pagerank/pagerank/pr pagerank/cache/unit 10
+hdfs dfs -mkdir /mysql 
+hdfs dfs -put mysql-connector-java-*.jar /mysql/
+```
+
+4. run hadoop project
+
+```shell
+hadoop jar page-rank.jar Driver pagerank/transition pagerank/pagerank/pr pagerank/keyvalue pagerank/cache/unit 10
 ```
 
 - `Driver` is the entry class
 - `pagerank/transition/` is the dir of transition in hdfs
-- `pagerank/pagerank/pr` is the dir of pr0 in hdfs
+- `pagerank/pagerank/pr` is the base dir of pr0 in hdfs
+- `pagerank/keyvalue` is the dir of keyvalue in hdfs
 - `pagerank/unit` is the dir of middle results
 - `10` is the times of convergence
 
